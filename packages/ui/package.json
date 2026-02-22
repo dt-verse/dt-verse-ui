@@ -5,7 +5,15 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./theme.css": "./src/theme.css"
+  },
+  "files": ["dist", "src/theme.css"],
   "sideEffects": false,
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm --clean",
@@ -23,5 +31,6 @@
   "devDependencies": {
     "tsup": "^8.2.4",
     "typescript": "^5.5.4"
-  }
+  },
+  "publishConfig": { "access": "public" }
 }
